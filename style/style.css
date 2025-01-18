@@ -1,0 +1,36 @@
+* {
+    outline: none;
+    user-select: none;
+}
+:root {
+    scrollbar-color: lightgray black;
+}
+body, ::selection {
+    background-color: black;
+    color: lightgray;
+}
+
+button, textarea {
+    background-color: lightgray;
+    border-radius: 5px;
+}
+button:not([disabled]) {
+    cursor: pointer;
+}
+textarea {
+    font-family: monospace;
+    color: black;
+    scrollbar-color: black lightgray;
+}
+textarea#infoTextarea {
+    width: 450px;
+    height: 76px;
+    resize: none;
+}
+canvas {
+    background-color: lightgray;
+
+    --sizeMul: 6;
+    width: calc((16 * 6px) * var(--sizeMul));
+    height: calc((8 * 8px) * var(--sizeMul));
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<title>.8xp Editor (for TI-83+)</title>
+<link rel="stylesheet" href="./style/style.css">
+
+<button id="openBtn" autofocus>Open .8xp</button>
+<br><textarea id="infoTextarea" disabled></textarea>
+<br><canvas id="canvas"></canvas>
+
+<script src="/libs/filebuf-SWITCHjs.js"></script>
+<script src="./lib/csvLoader.js"></script>
+<script src="./data/tokens8xp.js"></script>
+<script src="./font/chars.js"></script>
+<script src="./lib/parse8xp.js"></script>
+<script>
+    onload = async function () {
+        await tokens8xp_fetchData()
+        await chars_fetchData()
+    }
+
+    async function open () {
+        let [handle] = await showOpenFilePicker({
+            multiple: false,
+            excludeAcceptAllOption: true,
+            startIn: "downloads",
+            types: [{
+                accept: {
+                    "*/*": [".8xp"]
+                },
+                description: ":"
+            }]
+        })
+        let file = await handle.getFile()
+        let buf = await file.arrayBuffer()
+        let fileBuf = new FileBuf(buf)
+
+        let result = parse8xp(fileBuf)
+            infoTextarea.value = `Program name     : ${result.name}\nProgram archived : ${result.archived ? "Yes" : "No"}\nProgram size     : ${file.size + " bytes"}\nProgram comment  : ${result.comment}\nProgram version  : ${result.version}`
+            chars_renderText(result.text, canvas)
+    }
+    openBtn.onclick = open
+</script>
