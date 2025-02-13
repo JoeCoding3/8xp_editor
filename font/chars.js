@@ -76,7 +76,8 @@ function chars_renderText (text, canvas) {
     ctx.fillStyle = "black"
 
     let tokens = chars_tokenizeText(text)
-    function draw (tokens, canvas, ctx, test = false) {
+    function draw (tokens, ctx, test = false) {
+        let maxX = 0
         let maxY = 0
         let charX = 0
         let charY = 0
@@ -90,27 +91,26 @@ function chars_renderText (text, canvas) {
                 for (let i = 0; i < data.length; i++) {
                     let col = data[i]
                     let x = ((charX * 6) + (i % 6)) * chars_screenSizeMul
-                    let y = (charY * 8) + Math.floor(i / 6)
-                    while (x > canvas.width) {
-                        x -= canvas.width
-                        y += 8
-                    }
-                    y *= chars_screenSizeMul
+                    let y = ((charY * 8) + Math.floor(i / 6)) * chars_screenSizeMul
                     
                     if (!test) ctx.fillStyle = col
                     if (!test) ctx.fillRect(x, y, chars_screenSizeMul, chars_screenSizeMul)
+                    if (maxX < x) maxX = x
                     if (maxY < y) maxY = y
                 }
                 charX++
             }
         }
+        maxX += chars_screenSizeMul
         maxY += chars_screenSizeMul
-        return maxY
+        return {maxX, maxY}
     }
 
     canvas.width = (16 * 6) * chars_screenSizeMul * chars_screenTextScale
-    let maxY = draw(tokens, canvas, null, true)
+    let {maxX, maxY} = draw(tokens, null, true)
+    canvas.width = maxX
     canvas.height = maxY
+    canvas.style.width = (maxX / chars_screenTextScale) + "px"
     canvas.style.height = (maxY / chars_screenTextScale) + "px"
-    draw(tokens, canvas, ctx, false)
+    draw(tokens, ctx)
 }
