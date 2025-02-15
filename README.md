@@ -1,4 +1,4 @@
-## An editor for .8xp TI-BASIC files
+## An editor for .8xp program files
 ### This is made for the TI-83 Plus, but it probably works with files from other calculators.
 **Note: Since this tool is still in development, it can only *read* .8xp files, not *write* .8xp files.**
 
