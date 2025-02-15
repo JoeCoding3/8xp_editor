@@ -33,7 +33,7 @@
         let fileBuf = new FileBuf(buf)
 
         let result = parse8xp(fileBuf)
-            infoTextarea.value = `Program name     : ${result.name}\nProgram archived : ${result.archived ? "Yes" : "No"}\nProgram size     : ${file.size + " bytes"}\nProgram comment  : ${result.comment}\nProgram version  : ${result.version}`
+            infoTextarea.value = `Program name      : ${result.name}\nProgram archived  : ${result.archived ? "Yes" : "No"}\nProgram protected : ${result.protected ? "Yes" : "No"}\nProgram size      : ${file.size + " bytes"}\nProgram comment   : ${result.comment}\nProgram version   : ${result.version}`
             chars_renderText(result.text, canvas)
     }
     openBtn.onclick = open

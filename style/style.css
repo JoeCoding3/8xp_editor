@@ -24,7 +24,7 @@ textarea {
 }
 textarea#infoTextarea {
     width: 450px;
-    height: 76px;
+    height: 91px;
     resize: none;
 }
 canvas {
