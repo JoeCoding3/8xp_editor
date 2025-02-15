@@ -13,5 +13,5 @@
 "B","~Neg~","int(","abs(","det(","identity(","dim(","sum(","prod(","not(","iPart(","fPart(","\LNK-3","~Rt~(","~CubeRt~~Rt~(","ln_(","~NatLogE~^("
 "C","log(","~Ten~^(","sin(","sin~Inverse~(","cos(","cos~Inverse~(","tan(","tan~Inverse~(","sinh(","sinh~Inverse~(","cosh(","cosh~Inverse~(","tanh(","tanh~Inverse~(","If ","Then"
 "D","Else","While ","Repeat ","For(","End","Return","Lbl ","Goto ","Pause ","Stop","IS>(","DS<(","Input ","Prompt ","Disp ","DispGraph"
-"E","Output(","ClrHome","Fill(","SortA(","SortD(","DispTable","Menu(","Send(","Get(","PlotsOn ","PlotsOff ","~ListCapL~","Plot1(","Plot2(","Plot3(","\NUL"
+"E","Output(","ClrHome","Fill(","SortA(","SortD(","DispTable","Menu(","Send(","Get(","PlotsOn ","PlotsOff ","~ListCapL~","Plot1(","Plot2(","Plot3(","\LNK-4"
 "F","^","~SupX~~Rt~","1-Var Stats ","2-Var Stats ","LinReg(a+bx) ","ExpReg ","LnReg ","PwrReg ","Med-Med ","QuadReg ","ClrList ","ClrTable","Histogram","xyLine","Scatter","LinReg(ax+b) "

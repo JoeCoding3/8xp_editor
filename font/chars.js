@@ -64,6 +64,7 @@ function chars_tokenizeText (text) {
             longToken = ""
         } else if (inLongToken && char == "~") {
             inLongToken = false
+            if (longToken == "") longToken = "~"
             tokens.push(longToken)
             longToken = null
         } else if (inLongToken) longToken += char
