@@ -23,7 +23,7 @@ textarea {
     scrollbar-color: black lightgray;
 }
 textarea#infoTextarea {
-    width: 450px;
+    width: 475px;
     height: 91px;
     resize: none;
 }
