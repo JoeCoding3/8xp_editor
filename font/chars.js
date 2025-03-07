@@ -76,7 +76,7 @@ function chars_renderText (text, canvas) {
     let ctx = canvas.getContext("2d")
     ctx.fillStyle = "black"
 
-    let tokens = chars_tokenizeText(text)
+    let tokens = [":", ...chars_tokenizeText(text)]
     function draw (tokens, ctx, test = false) {
         let maxX = 0
         let maxY = 0
@@ -84,23 +84,24 @@ function chars_renderText (text, canvas) {
         let charY = 0
         for (let i = 0; i < tokens.length; i++) {
             let token = tokens[i]
-            let data = chars_getChar(token)
             if (token == "\n") {
+                token = ":"
                 charX = 0
                 charY++
-            } else {
-                for (let i = 0; i < data.length; i++) {
-                    let col = data[i]
-                    let x = ((charX * 6) + (i % 6)) * chars_screenSizeMul
-                    let y = ((charY * 8) + Math.floor(i / 6)) * chars_screenSizeMul
-                    
-                    if (!test) ctx.fillStyle = col
-                    if (!test) ctx.fillRect(x, y, chars_screenSizeMul, chars_screenSizeMul)
-                    if (maxX < x) maxX = x
-                    if (maxY < y) maxY = y
-                }
-                charX++
             }
+            let data = chars_getChar(token)
+
+            for (let i = 0; i < data.length; i++) {
+                let col = data[i]
+                let x = ((charX * 6) + (i % 6)) * chars_screenSizeMul
+                let y = ((charY * 8) + Math.floor(i / 6)) * chars_screenSizeMul
+                
+                if (!test) ctx.fillStyle = col
+                if (!test) ctx.fillRect(x, y, chars_screenSizeMul, chars_screenSizeMul)
+                if (maxX < x) maxX = x
+                if (maxY < y) maxY = y
+            }
+            charX++
         }
         maxX += chars_screenSizeMul
         maxY += chars_screenSizeMul
